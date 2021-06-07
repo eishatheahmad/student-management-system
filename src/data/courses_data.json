@@ -1,0 +1,53 @@
+[
+    {
+        "id":1,
+        "course_id":"CS218",
+        "course_name":"Data Structures",
+        "instructor_name":"Dr. M kashif",
+        "offered_in_sem":4,
+        "is_compulsory":1,
+        "department":"CS"
+    },
+
+    {
+        "id":2,
+        "course_id":"CS217",
+        "course_name":"Object Oriented Programming",
+        "instructor_name":"Prof. Ali Raheem",
+        "offered_in_sem":4,
+        "is_compulsory":1,
+        "department":"CS"
+    },
+
+    {
+        "id":3,
+        "course_id":"EE217",
+        "course_name":"Digital Logic Design",
+        "instructor_name":"Mr. Omer Ali",
+        "offered_in_sem":4,
+        "is_compulsory":1,
+        "department":"EE"
+    },
+
+    {
+        "id":4,
+        "course_id":"CS211",
+        "course_name":"Discrete Structures",
+        "instructor_name":"Dr. Mehmoona Raza",
+        "offered_in_sem":4,
+        "is_compulsory":1,
+        "department":"CS"
+    },
+
+    {
+        "id":5,
+        "course_id":"MT104",
+        "course_name":"Linear Algebra",
+        "instructor_name":"Dr. Bilal Tahir",
+        "offered_in_sem":4,
+        "is_compulsory":1,
+        "department":"MT"
+    }
+
+    
+]

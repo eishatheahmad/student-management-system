@@ -1,0 +1,61 @@
+.outer-div-dash
+{
+    margin-left: 20px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div-images
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.div-image-labels
+{
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    
+}
+
+.row-img1
+{
+    height: 270px;
+    width: 250px;
+   
+    cursor: pointer;
+
+}
+
+.row-img1:hover
+{
+    height: 300px;
+    width: 300px;
+    transition: 350ms;
+}
+
+.row-img2
+{
+    height: 270px;
+    width: 260px;
+    
+    cursor: pointer;
+
+}
+
+.row-img2:hover
+{
+    height: 300px;
+    width: 300px;
+    transition: 350ms;
+}
+
+.img-links
+{
+    text-decoration: none;
+    color: black;
+}
