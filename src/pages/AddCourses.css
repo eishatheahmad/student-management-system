@@ -1,0 +1,89 @@
+.form-outer-div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px  pink;
+}
+
+
+.add-button
+{
+    height: 40px;
+    padding: 10px 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 600;
+    border-radius: 3px;
+    margin-left: 335px;
+   
+}
+
+.form-inner-div
+{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    border: 2px  blue;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px 10px;
+
+    
+}
+
+
+.inputs
+{
+    align-self: flex-start;
+    font-weight: 500;
+    font-size: 14px;
+    height: 30px;
+    width: 400px;
+    
+}
+
+
+.labels
+{
+    align-self: flex-start;
+    font-weight: 500;
+    font-size: 14px;
+    
+    
+    
+}
+
+.icons
+{
+    height: 30px;
+    width: 27px;
+    border: 1px  black;
+    border-right: none;
+    color: white;
+    background-color: #060b26;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    
+    
+    
+    
+}
+
+.icon-div
+{
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.help-text
+{
+    margin-top: 5px;
+    font-weight: 200;
+    margin-bottom:2px ;
+}
+
+.inputs-select
+{
+    width: 405px;
+}

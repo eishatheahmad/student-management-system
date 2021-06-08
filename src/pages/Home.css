@@ -28,6 +28,7 @@
     width: 250px;
    
     cursor: pointer;
+    transition: 200ms;
 
 }
 
@@ -35,7 +36,7 @@
 {
     height: 300px;
     width: 300px;
-    transition: 350ms;
+    transition: 500ms;
 }
 
 .row-img2
@@ -44,6 +45,7 @@
     width: 260px;
     
     cursor: pointer;
+    transition: 200ms;
 
 }
 
@@ -51,7 +53,7 @@
 {
     height: 300px;
     width: 300px;
-    transition: 350ms;
+    transition: 500ms;
 }
 
 .img-links

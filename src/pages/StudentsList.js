@@ -5,7 +5,7 @@ import './StudentsList.css'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash , faEdit } from "@fortawesome/free-solid-svg-icons";
-
+import { Link } from 'react-router-dom';
 
 
 class StudentsList extends Component {
@@ -165,7 +165,9 @@ class StudentsList extends Component {
         return this.state.students.map((student,index)=>{
             const{id,name,RollNumber,dob,address,semester,warning,cgpa}=student
             return(
-                <tr className="my-table" key={id}>
+                    
+                
+                    <tr  className="my-table" key={id}>
                     <td> <a href="#" className="students-link">{id}</a></td>
                     <td> <a href="#" className="students-link">{RollNumber}</a></td>
                     <td> <a href="#" className="students-link" >{name}</a></td>
@@ -193,6 +195,8 @@ class StudentsList extends Component {
                     </td>
                     
                 </tr>
+
+               
             )
         })
     }
