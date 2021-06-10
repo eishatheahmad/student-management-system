@@ -5,7 +5,7 @@ import './ListOfCourses.css'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash , faEdit } from "@fortawesome/free-solid-svg-icons";
-
+import { Link} from 'react-router-dom';
 
 
 
@@ -21,7 +21,7 @@ class ListOfCourses extends Component {
                     course_name:"Data Structures",
                     instructor_name:"Dr. M kashif",
                     offered_in_sem:4,
-                    is_compulsary:1,
+                    is_compulsary:'Yes',
                     department:"CS"
                 },
             
@@ -31,7 +31,7 @@ class ListOfCourses extends Component {
                     course_name:"Object Oriented Programming",
                     instructor_name:"Prof. Ali Raheem",
                     offered_in_sem:4,
-                    is_compulsary:1,
+                    is_compulsary:'No',
                     department:"CS"
                 },
             
@@ -41,7 +41,7 @@ class ListOfCourses extends Component {
                     course_name:"Digital Logic Design",
                     instructor_name:"Mr. Omer Ali",
                     offered_in_sem:4,
-                    is_compulsary:0,
+                    is_compulsary:'Yes',
                     department:"EE"
                 },
             
@@ -51,7 +51,7 @@ class ListOfCourses extends Component {
                     course_name:"Discrete Structures",
                     instructor_name:"Dr. Mehmoona Raza",
                     offered_in_sem:4,
-                    is_compulsary:1,
+                    is_compulsary:'No',
                     department:"CS"
                 },
             
@@ -61,7 +61,7 @@ class ListOfCourses extends Component {
                     course_name:"Linear Algebra",
                     instructor_name:"Dr. Bilal Tahir",
                     offered_in_sem:4,
-                    is_compulsary:1,
+                    is_compulsary:'Yes',
                     department:"MT"
                 }
             ]
@@ -108,9 +108,10 @@ class ListOfCourses extends Component {
                         <div className="action-buttons">
                             
 
-                            <button className="edit-button-course">
+                           <Link to='/courses/profile'> <button className="edit-button-course" >
                                 <FontAwesomeIcon icon={faEdit} />
                             </button>
+                            </Link>
 
                             <button className="delete-button">
                                 <FontAwesomeIcon icon={faTrash} />

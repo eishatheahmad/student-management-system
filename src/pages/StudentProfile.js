@@ -25,7 +25,23 @@ class StudentProfile extends Component {
             new_cgpa:'3.34',
             status:'',
             is_edited:false,
-            rollno:''
+            courses:[
+                {
+                    
+                    course_id:'CS111',
+                    course_name:'Data Structures'
+                },
+
+                {
+                    course_id:'CS201',
+                    course_name:'Algorithms'
+                },
+
+                {
+                    course_id:'CS204',
+                    course_name:'Data Science'
+                }
+            ]
          }
 
 
@@ -135,6 +151,25 @@ class StudentProfile extends Component {
                                <div className="inner-div">
                                    <h3 className="labels">SEMESTER: </h3>
                                    <p className="student-data-p">{this.state.new_semester}</p>
+                               </div>
+
+                               <div className="inner-div">
+                                   <h3 className="labels">COURSES: </h3>
+                                   <table className="table-courses">
+                                       
+                                       <tr className="table-courses" >
+                                           <th className="table-header">Course ID</th>
+                                           <th className="table-header">Course Name</th>
+                                       </tr>
+                                       {
+                                           this.state.courses.map((item)=>
+                                           <tr className="table-courses">
+                                               <td className="table-row">{item.course_id}</td>
+                                               <td className="table-row">{item.course_name}</td>
+                                           </tr>)
+                                       }
+                                   </table>
+                                   
                                </div>
        
                                <div className="inner-div">

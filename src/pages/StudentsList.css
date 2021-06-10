@@ -16,6 +16,28 @@
     padding: 8px;
   }
 
+
+  .button-div
+  {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
+  
+    position: absolute;
+    right:  0;
+    
+  }
+  .add-student-button
+  {
+    
+    background-color: green;
+    height: 35px;
+    padding: 5px 5px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    
+  }
   .delete-button
   {
     margin-right: 5px;

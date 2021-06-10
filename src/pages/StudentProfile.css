@@ -22,6 +22,31 @@
     
 }
 
+.table-header
+{
+    
+    border: 1px solid black;
+    padding: 8px;
+    
+}
+
+
+
+.table-courses
+{
+    
+    margin-top: 40px;
+    border: 0.5px solid black;
+    width: 100%;
+    align-content: space-between;
+
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    
+   
+    width: 100%;
+}
+
 .edit-button
 {
     width: 80px;
@@ -95,6 +120,7 @@
     padding-left: 40px;
     padding-right: 40px;
     margin-top: 20px;
+    margin-bottom: 20px;
   
     color: black;
 }

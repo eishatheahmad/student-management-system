@@ -182,9 +182,11 @@ class StudentsList extends Component {
                         <div className="action-buttons">
                             
 
+                            <Link to='/students/profile'>
                             <button className="edit-button-student">
                                 <FontAwesomeIcon icon={faEdit} />
                             </button>
+                            </Link>
 
                             <button className="delete-button">
                                 <FontAwesomeIcon icon={faTrash} />
@@ -205,6 +207,7 @@ class StudentsList extends Component {
      
     return(<div>
         <h1>Students List</h1>
+        
         <table id='students'>
             <tbody>
                 <tr>{this.renderTableHeader()}</tr>
