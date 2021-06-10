@@ -182,7 +182,7 @@ class StudentsList extends Component {
                         <div className="action-buttons">
                             
 
-                            <button className="edit-button">
+                            <button className="edit-button-student">
                                 <FontAwesomeIcon icon={faEdit} />
                             </button>
 

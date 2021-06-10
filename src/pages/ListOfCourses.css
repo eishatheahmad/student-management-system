@@ -32,11 +32,11 @@
     color: black;
   }
 
-  .edit-button
+  .edit-button-course
   {
     margin-right: 5px;
     padding: 3px 3px 3px 3px;
-    background-color: rgba(22, 7, 87, 0.726);;
+    background-color: rgba(22, 7, 87, 0.726);
     color: white;
     border-radius: 2px;
     cursor: pointer;

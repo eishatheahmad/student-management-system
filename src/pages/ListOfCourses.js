@@ -41,7 +41,7 @@ class ListOfCourses extends Component {
                     course_name:"Digital Logic Design",
                     instructor_name:"Mr. Omer Ali",
                     offered_in_sem:4,
-                    is_compulsary:1,
+                    is_compulsary:0,
                     department:"EE"
                 },
             
@@ -74,15 +74,22 @@ class ListOfCourses extends Component {
         let key1='Action'
         header.push(key1)
         return header.map((key,index)=>{
- 
-           
+          
             return <th key={index}>{key.toUpperCase()}</th>
         })
     }
 
     renderTableData(){
         return this.state.courses.map((course,index)=>{
-            const{id,course_id,course_name,instructor_name,offered_in_sem,is_compulsary,department}=course
+            var{id,course_id,course_name,instructor_name,offered_in_sem,is_compulsary,department}=course
+           if(is_compulsary==1)
+           {
+               is_compulsary='Yes'
+           }
+           else
+           {
+               is_compulsary='No'
+           }
             return(
                 <tr className="my-table" key={id}>
                     <td> <a href="#" className="course-link">{id}</a></td>
@@ -90,6 +97,8 @@ class ListOfCourses extends Component {
                     <td> <a href="#" className="course-link" >{course_name}</a></td>
                     <td> <a href="#" className="students-link">{instructor_name}</a></td>
                     <td> <a href="#" className="students-link" >{offered_in_sem}</a></td>
+
+                    
                     <td> <a href="#" className="students-link" >{is_compulsary}</a></td>
                     <td> <a href="#" className="students-link" >{department}</a></td>
                     
@@ -99,7 +108,7 @@ class ListOfCourses extends Component {
                         <div className="action-buttons">
                             
 
-                            <button className="edit-button">
+                            <button className="edit-button-course">
                                 <FontAwesomeIcon icon={faEdit} />
                             </button>
 
