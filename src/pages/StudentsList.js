@@ -8,123 +8,145 @@ import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+
+
 class StudentsList extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
+        row_click_id:'',
+
+        
       students: [
         {
           id: 1,
-          RollNumber: "19L-4116",
-          name: "Muaz Ali",
-          dob: "1999-06-08",
-          address: "221 B, Bakers Street, Lahore",
-          semester: 4,
-          warning: 0,
-          cgpa: 3.42,
+          student_roll: "19L-4116",
+          student_name: "Muaz Ali",
+          student_dob: "1999-06-08",
+          student_address: "221 B, Bakers Street, Lahore",
+          student_semester: 4,
+          student_warning: 0,
+          student_cgpa: 3.42,
         },
 
         {
           id: 2,
-          RollNumber: "19L-4006",
-          name: "Umair Mirza",
-          dob: "1998-10-08",
-          address: "164 B, Liberty Street, Lahore",
-          semester: 4,
-          warning: 1,
-          cgpa: 1.89,
+          student_roll: "19L-4006",
+          student_name: "Umair Mirza",
+          student_dob: "1998-10-08",
+          student_address: "164 B, Liberty Street, Lahore",
+          student_semester: 4,
+          student_warning: 1,
+          student_cgpa: 1.89,
         },
 
         {
           id: 3,
-          RollNumber: "19L-2236",
-          name: "Asad Imran",
-          dob: "1997-02-02",
-          address: "200 E, Pineapple Street, Lahore",
-          semester: 4,
-          warning: 0,
-          cgpa: 3.2,
+          student_roll: "19L-2236",
+          student_name: "Asad Imran",
+          student_dob: "1997-02-02",
+          student_address: "200 E, Pineapple Street, Lahore",
+          student_semester: 4,
+          student_warning: 0,
+          student_cgpa: 3.2,
         },
 
         {
           id: 4,
-          RollNumber: "19L-4232",
-          name: "Faiqah Shuaib",
-          dob: "1999-03-09",
-          address: "209 B, Banana Street, Lahore",
-          semester: 4,
-          warning: 0,
-          cgpa: 3.75,
+          student_roll: "19L-4232",
+          student_name: "Faiqah Shuaib",
+          student_dob: "1999-03-09",
+          student_address: "209 B, Banana Street, Lahore",
+          student_semester: 4,
+          student_warning: 0,
+          student_cgpa: 3.75,
         },
 
         {
           id: 5,
-          RollNumber: "19L-2760",
-          name: "Sameen Imran",
-          dob: "1999-07-08",
-          address: "21 B, Apricot Street, Lahore",
-          semester: 4,
-          warning: 0,
-          cgpa: 2.98,
+          student_roll: "19L-2760",
+          student_name: "Sameen Imran",
+          student_dob: "1999-07-08",
+          student_address: "21 B, Apricot Street, Lahore",
+          student_semester: 4,
+          student_warning: 0,
+          student_cgpa: 2.98,
         },
 
         {
           id: 6,
-          RollNumber: "19L-1189",
-          name: "Omer Hassan",
-          dob: "1998-01-21",
-          address: "221 B, Apple Street, Lahore",
-          semester: 4,
-          warning: 0,
-          cgpa: 3.1,
+          student_roll: "19L-1189",
+          student_name: "Omer Hassan",
+          student_dob: "1998-01-21",
+          student_address: "221 B, Apple Street, Lahore",
+          student_semester: 4,
+          student_warning: 0,
+          student_cgpa: 3.1,
         },
 
         {
           id: 7,
-          RollNumber: "19L-2760",
-          name: "Hadia Ishtiaq",
-          dob: "1999-05-16",
-          address: "83 C, Grapes Street, Lahore",
-          semester: 4,
-          warning: 0,
-          cgpa: 3.33,
+          student_roll: "19L-2760",
+          student_name: "Hadia Ishtiaq",
+          student_dob: "1999-05-16",
+          student_address: "83 C, Grapes Street, Lahore",
+          student_semester: 4,
+          student_warning: 0,
+          student_cgpa: 3.33,
         },
 
         {
           id: 8,
-          RollNumber: "19L-1022",
-          name: "Areeb Ahmed",
-          dob: "1998-02-01",
-          address: "34 D, Bakers Street,Lahore",
-          semester: 4,
-          warning: 0,
-          cgpa: 3.75,
+          student_roll: "19L-1022",
+          student_name: "Areeb Ahmed",
+          student_dob: "1998-02-01",
+          student_address: "34 D, Bakers Street,Lahore",
+          student_semester: 4,
+          student_warning: 0,
+          student_cgpa: 3.75,
         },
 
         {
           id: 9,
-          RollNumber: "19L-1223",
-          name: "Maida Tariq",
-          dob: "1999-03-08",
-          address: "24 E, Orange Street, Lahore",
-          semester: 4,
-          warning: 0,
-          cgpa: 3.52,
+          student_roll: "19L-1223",
+          student_name: "Maida Tariq",
+          student_dob: "1999-03-08",
+          student_address: "24 E, Orange Street, Lahore",
+          student_semester: 4,
+          student_warning: 0,
+          student_cgpa: 3.52,
         },
 
         {
           id: 10,
-          RollNumber: "19L-2375",
-          name: "Humza Noor",
-          dob: "1997-11-04",
-          address: "190 D, Strawberry Street, Lahore",
-          semester: 4,
-          warning: 0,
-          cgpa: 3.24,
+          student_roll: "19L-2375",
+          student_name: "Humza Noor",
+          student_dob: "1997-11-04",
+          student_address: "190 D, Strawberry Street, Lahore",
+          student_semester: 4,
+          student_warning: 0,
+          student_cgpa: 3.24,
+          delete:''
         },
       ],
     };
+
+    
   }
+
+  deleteClicked= (studentroll)=>
+    {
+        console.log("i am in delete"+studentroll)
+        let url="http://localhost:5000/api/courses/"+ studentroll
+        axios.delete(url).then((res) => {
+            console.info(res);
+        });
+
+        this.setState({delete:"1"})
+
+
+    }
 
   renderTableHeader() {
     let header = Object.keys(this.state.students[0]);
@@ -136,75 +158,86 @@ class StudentsList extends Component {
   }
 
   componentDidMount() {
+    console.log("i am in get")
     axios.get("http://localhost:5000/api/students").then((res) => {
       console.info(res);
     });
   }
 
+  rowClicked = (rollnum) =>
+  {
+      this.setState({row_click_id:rollnum});
+
+     console.log(rollnum)
+     
+
+  }
+ 
   renderTableData() {
     return this.state.students.map((student, index) => {
-      const { id, name, RollNumber, dob, address, semester, warning, cgpa } =
+      const { id, student_name, student_roll, student_dob, student_address, student_semester, student_warning, student_cgpa } =
         student;
       return (
-        <tr className="my-table" key={id}>
+        <tr className="my-table" key={id} data-item={student} >
           <td>
             {" "}
-            <a href="#" className="students-link">
+            
               {id}
-            </a>
+            
           </td>
           <td>
             {" "}
-            <a href="#" className="students-link">
-              {RollNumber}
-            </a>
+            
+              {student_roll}
+            
           </td>
           <td>
             {" "}
-            <a href="#" className="students-link">
-              {name}
-            </a>
+           
+              {student_name}
+            
           </td>
           <td>
             {" "}
-            <a href="#" className="students-link">
-              {dob}
-            </a>
+           
+              {student_dob}
+            
           </td>
           <td>
             {" "}
-            <a href="#" className="students-link">
-              {address}
-            </a>
+           
+              {student_address}
+            
           </td>
           <td>
             {" "}
-            <a href="#" className="students-link">
-              {semester}
-            </a>
+            
+              {student_semester}
+            
           </td>
           <td>
             {" "}
-            <a href="#" className="students-link">
-              {warning}
-            </a>
+            
+              {student_warning}
+            
           </td>
           <td>
             {" "}
-            <a href="#" className="students-link">
-              {cgpa}
-            </a>
+            
+              {student_cgpa}
+            
           </td>
-
+          
           <td>
             <div className="action-buttons">
+            
               <Link to="/students/profile">
-                <button className="edit-button-student">
+                <button classstudent_name="edit-button-student" onClick={() => this.rowClicked(student.student_roll)}>
                   <FontAwesomeIcon icon={faEdit} />
                 </button>
               </Link>
 
-              <button className="delete-button">
+              <button cclassName="delete-button" onClick={()=>this.deleteClicked(student.student_roll)}>
                 <FontAwesomeIcon icon={faTrash} />
               </button>
             </div>
@@ -213,7 +246,11 @@ class StudentsList extends Component {
       );
     });
   }
+
+ 
   render() {
+
+    
     return (
       <div>
         <h1>Students List</h1>

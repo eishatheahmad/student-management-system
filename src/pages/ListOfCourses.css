@@ -46,6 +46,8 @@
   .edit-button:hover
   {
     color: black;
+    cursor: pointer;
+    
   }
   
   #courses tr:nth-child(even){background-color: #f2f2f2;}

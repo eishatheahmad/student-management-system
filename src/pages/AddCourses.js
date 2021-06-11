@@ -6,6 +6,7 @@ import * as AiIcons from "react-icons/ai"
 
 
 import * as FaIcons from "react-icons/fa"
+import axios from 'axios';
 
 
 
@@ -14,15 +15,63 @@ class AddCourse extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            new_course:[],
-            course_id:'',
+            new_course:{},
+            course_ID:'',
             course_name:'',
             instructor_name:'',
+            is_compulsory:'',
+            department:'',
             offered_in_sem:'',
-            is_compulsary:'',
-            department:''
+            
+            temp:{}
 
           }
+
+          this.onInputchange = this.onInputchange.bind(this);
+    }
+
+
+    addNewCourse(event)
+    {
+        
+        const updated_object={
+            course_ID:this.state.course_ID,
+            course_name:this.state.course_name,
+            instructor_name:this.state.instructor_name,
+           
+            department:this.state.department,
+            is_compulsory:this.state.is_compulsory,
+            offered_in_sem:this.state.offered_in_sem,
+            
+
+            };
+            console.log(updated_object)
+
+        let url="http://localhost:5000/api/courses/"
+
+        axios.post(url,updated_object).then((res) => {
+            console.info(res);
+            this.setState({new_course:updated_object})
+            console.log("i am in post of course")
+            
+         });
+         console.log("i am in out of post of course")
+         event.preventDefault();
+       
+    }
+
+
+    onInputchange(event) {
+        
+        this.setState({
+          [event.target.name]: event.target.value
+        });
+
+        console.log(event.target.name)
+        console.log(event.target.value)
+        console.log(this.state.is_compulsory)
+        
+        
     }
     render() { 
         return ( 
@@ -35,66 +84,69 @@ class AddCourse extends Component {
             
                         <div className="icon-div">
                         <BiIcons.BiBookAdd className="icons"></BiIcons.BiBookAdd>
-                        <input type="text" className="inputs" name="courseid" placeholder="Enter Course ID i.e. CS000" required></input>
+                        <input type="input" className="inputs" name="course_ID" placeholder="Enter Course ID i.e. CS000" required  onChange={this.onInputchange}></input>
                         </div>
 
                         <label className="labels">COURSE NAME</label>
                         <div className="icon-div">
                         <BiIcons.BiRename className="icons"></BiIcons.BiRename>
-                        <input type="text" className="inputs" name="coursename" placeholder="Enter full course name " required></input>
+                        <input type="text" className="inputs" name="course_name" placeholder="Enter full course name " required onChange={this.onInputchange}></input>
                         </div>
 
                         <label className="labels">INSTRUCTOR NAME</label>
                         <div className="icon-div">
                         <FaIcons.FaChalkboardTeacher className="icons"></FaIcons.FaChalkboardTeacher>
-                        <input type="text" className="inputs" name="instructor" placeholder="Enter Instructor name " required></input>
+                        <input type="text" className="inputs" name="instructor_name" placeholder="Enter Instructor name " required onChange={this.onInputchange}></input>
                         </div>
-
-
-                        
-                        <label className="labels">FOR SEMESTER</label>
-                        <div className="icon-div">
-                        <AiIcons.AiOutlineNumber className="icons"></AiIcons.AiOutlineNumber>
-                       
-                            <select name="mySelect" className="inputs-select" required>
-                                <option value="" selected disabled hidden>Semester</option>
-                                <option id="semester" value="Semester 1">Semester 1</option>
-                                <option id="semester" value="Semester 2">Semester 2</option>
-                                <option id="semester" value="Semester 3">Semester 3</option>
-                                <option id="semester" value="Semester 4">Semester 4</option>
-                                <option id="semester" value="Semester 5">Semester 5</option>
-                                <option id="semester" value="Semester 6">Semester 6</option>
-                                <option id="semester" value="Semester 7">Semester 7</option>
-                                <option id="semester" value="Semester 8">Semester 8</option>
-                            </select>
-                        </div>
-
 
 
                         <label className="labels">COMPULSORY</label>
                         <div className="icon-div">
                         <AiIcons.AiFillCheckSquare className="icons"></AiIcons.AiFillCheckSquare>
                        
-                            <select name="mySelect" className="inputs-select" required>
+                            <select name="is_compulsory" className="inputs-select" required onChange={this.onInputchange}>
                                 <option value="" selected disabled hidden>Select option</option>
-                                <option id="compulsory" value="Yes">Yes (for core courses)</option>
-                                <option id="compulsory" value="No">No (for elective courses)</option>
+                                <option id="compulsory" value='0'>Yes (for core courses)</option>
+                                <option id="compulsory" value='1'>No (for elective courses)</option>
                                 
                                
                             </select>
                         </div>
+
+                        
+                        
+                        <label className="labels">FOR SEMESTER</label>
+                        <div className="icon-div">
+                        <AiIcons.AiOutlineNumber className="icons"></AiIcons.AiOutlineNumber>
+                       
+                            <select name="offered_in_sem" className="inputs-select" required onChange={this.onInputchange}>
+                                <option value="" selected disabled hidden>Semester</option>
+                                <option id="semester" value="1">Semester 1</option>
+                                <option id="semester" value="2">Semester 2</option>
+                                <option id="semester" value="3">Semester 3</option>
+                                <option id="semester" value="4">Semester 4</option>
+                                <option id="semester" value="5">Semester 5</option>
+                                <option id="semester" value="6">Semester 6</option>
+                                <option id="semester" value="7">Semester 7</option>
+                                <option id="semester" value="8">Semester 8</option>
+                            </select>
+                        </div>
+
+
+
+                       
 
 
                         <label className="labels">DEPARTMENT</label>
                         <div className="icon-div">
                         <BiIcons.BiBuilding className="icons"></BiIcons.BiBuilding >
                        
-                            <select name="mySelect" className="inputs-select" required>
+                            <select name="department" className="inputs-select" required onChange={this.onInputchange}>
                                 <option value="" selected disabled hidden>Select Department</option>
-                                <option id="compulsory" value="CS">CS</option>
-                                <option id="compulsory" value="EE">EE</option>
-                                <option id="compulsory" value="CV">CV</option>
-                                <option id="compulsory" value="MG">MG</option>
+                                <option id="dept" value="CS">CS</option>
+                                <option id="dept" value="EE">EE</option>
+                                <option id="dept" value="CV">CV</option>
+                                <option id="dept" value="MG">MG</option>
                                 
                                
                             </select>
@@ -103,7 +155,7 @@ class AddCourse extends Component {
                        
                         
 
-                        <button className="add-button">Add Course</button>
+                        <button className="add-button" onClick={this.addNewCourse.bind(this)}>Add Course</button>
 
                     </form>
 

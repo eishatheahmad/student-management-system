@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave , faEdit } from "@fortawesome/free-solid-svg-icons";
 import './CourseProfile.css'
-
+import axios from "axios"; 
 
 
 class CourseProfile extends Component {
@@ -12,17 +12,42 @@ class CourseProfile extends Component {
         super(props);
         this.state = { 
             id:'0',
-            course_id:'CS218',
+            course_ID:'CS218',
             course_name: 'Data Structures',
             instructor_name: 'Dr. M Kashif',
             offered_in_sem:'Semester 4',
             
             department:'CS',
             is_edited:false,
-            is_compulsary_value:'Yes'
+            is_compulsory:'0',
+
+            course:[]
             
          }
     }
+
+
+    componentDidMount()
+    {
+        let url= "http://localhost:5000/api/courses/"+ this.state.course_ID;
+        axios.get(url).then((res) => {
+        console.info(res);
+
+        this.setState({course_ID:res.data.course_ID})
+        this.setState({course_name:res.data.course_name})
+        this.setState({instructor_name:res.data.instructor_name})
+        this.setState({offered_in_sem:res.data.offered_in_sem})
+        this.setState({department:res.data.department})
+        this.setState({is_compulsory:res.data.is_compulsory})
+        
+
+        
+     });
+    }
+
+
+
+
     canEdit()
     {
         this.setState({is_edited:true})
@@ -30,16 +55,39 @@ class CourseProfile extends Component {
 
     saveData()
     {
+
+        const updated_object={
+                                course_name:this.state.course_name,
+                                instructor_name:this.state.instructor_name,
+                                instructor_name:this.state.instructor_name,
+                                offered_in_sem:this.state.offered_in_sem,
+                                department:this.department,
+                                is_compulsory:this.is_compulsory
+
+                                
+                                
+                                };
+        let url="http://localhost:5000/api/courses/"+ this.state.course_ID
+        
+
+        axios.put(url,updated_object).then((res) => {
+            console.info(res);
+            this.setState({is_edited:false})
+            
+         });
+         console.log("i am after put")
+
         this.setState({is_edited:false})
+
     }
 
 
     courseidChanged=(e)=>
     {
-        this.setState({course_id:e.target.value})
+        this.setState({course_ID:e.target.value})
     }
 
-    coursenameChanged=(e)=>
+    course_nameChanged=(e)=>
     {
         this.setState({course_name:e.target.value})
     }
@@ -54,9 +102,9 @@ class CourseProfile extends Component {
         this.setState({department:e.target.value})
     }
 
-    is_compulsary_Changed=(e)=>
+    is_compulsory_Changed=(e)=>
     {
-        this.setState({is_compulsary_value:e.target.value})
+        this.setState({is_compulsory:e.target.value})
         
 
         console.log(e.target.value)
@@ -70,15 +118,7 @@ class CourseProfile extends Component {
 
     render() { 
 
-        if(this.is_compulsary==1)
-        {
-           this.is_compulsary_value='Yes'
-        }
-        else
-        {
-            this.is_compulsary_value='No'
-        }
-
+       
         if(this.state.is_edited==false)
         {
             
@@ -91,7 +131,7 @@ class CourseProfile extends Component {
                            <div>
                                <div className="inner-div">
                                    <h3 className="labels">COURSE ID: </h3>
-                                   <p className="student-data-p">{this.state.course_id}</p>
+                                   <p className="student-data-p">{this.state.course_ID}</p>
                                </div>
        
                                <div className="inner-div">
@@ -113,7 +153,7 @@ class CourseProfile extends Component {
        
                                <div className="inner-div">
                                    <h3 className="labels">COMPULSARY: </h3>
-                                   <p className="student-data-p">{this.state.is_compulsary_value}</p>
+                                   <p className="student-data-p">{this.state.is_compulsory}</p>
                                </div>
 
                                <div className="inner-div">
@@ -145,7 +185,7 @@ class CourseProfile extends Component {
                     <div>
                         <div className="inner-div">
                             <h3 className="labels">COURSE ID: </h3>
-                            <input  className="input-fields" defaultValue={this.state.course_id} type="input" onChange={this.courseidChanged.bind(this)}></input>
+                            <input  className="input-fields" defaultValue={this.state.course_ID} type="input" onChange={this.courseidChanged.bind(this)}></input>
                             
                         </div>
                     </div>
@@ -153,7 +193,7 @@ class CourseProfile extends Component {
                     <div>
                         <div className="inner-div">
                             <h3 className="labels">COURSE NAME: </h3>
-                            <input  className="input-fields" defaultValue={this.state.course_name} type="input" onChange={this.coursenameChanged.bind(this)}></input>
+                            <input  className="input-fields" defaultValue={this.state.course_name} type="input" onChange={this.course_nameChanged.bind(this)}></input>
                         </div>
                     </div>
 
@@ -172,14 +212,14 @@ class CourseProfile extends Component {
                            
                                 <select name="mySelect" className="inputs-fields" required onChange={this.offered_in_semester_Changed.bind(this)}>
                                 <option value="" selected disabled hidden>{this.state.offered_in_sem}</option>
-                                    <option id="semester" value="Semester 1">Semester 1</option>
-                                    <option id="semester" value="Semester 2">Semester 2</option>
-                                    <option id="semester" value="Semester 3">Semester 3</option>
-                                    <option id="semester" value="Semester 4">Semester 4</option>
-                                    <option id="semester" value="Semester 5">Semester 5</option>
-                                    <option id="semester" value="Semester 6">Semester 6</option>
-                                    <option id="semester" value="Semester 7">Semester 7</option>
-                                    <option id="semester" value="Semester 8">Semester 8</option>
+                                    <option id="semester" value="1">Semester 1</option>
+                                    <option id="semester" value="2">Semester 2</option>
+                                    <option id="semester" value="3">Semester 3</option>
+                                    <option id="semester" value="4">Semester 4</option>
+                                    <option id="semester" value="5">Semester 5</option>
+                                    <option id="semester" value="6">Semester 6</option>
+                                    <option id="semester" value="7">Semester 7</option>
+                                    <option id="semester" value="8">Semester 8</option>
                                 </select>
                             
                         </div>
@@ -189,12 +229,12 @@ class CourseProfile extends Component {
                         <div className="inner-div">
                             <h3 className="labels">COMPULSARY: </h3>
                            
-                                <select name="mySelect" className="inputs-fields" required onChange={this.is_compulsary_Changed.bind(this)}>
+                                <select name="mySelect" className="inputs-fields" required onChange={this.is_compulsory_Changed.bind(this)}>
                                    
-                                    <option value="" selected disabled hidden>{this.state.is_compulsary_value}</option>
+                                    <option value="" selected disabled hidden>{this.state.is_compulsory}</option>
                                     
-                                    <option id="compulsory" value="Yes">Yes (for core courses)</option>
-                                    <option id="compulsory" value="No">No (for elective courses)</option>
+                                    <option id="compulsory" value="0">Yes (for core courses)</option>
+                                    <option id="compulsory" value="1">No (for elective courses)</option>
                                 
                                 </select>
                             

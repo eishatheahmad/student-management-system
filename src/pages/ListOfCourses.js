@@ -6,7 +6,7 @@ import './ListOfCourses.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash , faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Link} from 'react-router-dom';
-
+import axios from "axios";
 
 
 
@@ -21,7 +21,7 @@ class ListOfCourses extends Component {
                     course_name:"Data Structures",
                     instructor_name:"Dr. M kashif",
                     offered_in_sem:4,
-                    is_compulsary:'Yes',
+                    is_compulsory:'0',
                     department:"CS"
                 },
             
@@ -31,7 +31,7 @@ class ListOfCourses extends Component {
                     course_name:"Object Oriented Programming",
                     instructor_name:"Prof. Ali Raheem",
                     offered_in_sem:4,
-                    is_compulsary:'No',
+                    is_compulsory:'1',
                     department:"CS"
                 },
             
@@ -41,7 +41,7 @@ class ListOfCourses extends Component {
                     course_name:"Digital Logic Design",
                     instructor_name:"Mr. Omer Ali",
                     offered_in_sem:4,
-                    is_compulsary:'Yes',
+                    is_compulsory:'0',
                     department:"EE"
                 },
             
@@ -51,7 +51,7 @@ class ListOfCourses extends Component {
                     course_name:"Discrete Structures",
                     instructor_name:"Dr. Mehmoona Raza",
                     offered_in_sem:4,
-                    is_compulsary:'No',
+                    is_compulsory:'1',
                     department:"CS"
                 },
             
@@ -61,10 +61,14 @@ class ListOfCourses extends Component {
                     course_name:"Linear Algebra",
                     instructor_name:"Dr. Bilal Tahir",
                     offered_in_sem:4,
-                    is_compulsary:'Yes',
+                    is_compulsory:'0',
                     department:"MT"
                 }
             ]
+
+            ,
+            courseid:'',
+            delete:''
         }
     }
 
@@ -79,17 +83,41 @@ class ListOfCourses extends Component {
         })
     }
 
+
+    componentDidMount() {
+        axios.get("http://localhost:5000/api/courses").then((res) => {
+          console.info(res);
+        });
+      }
+
+    rowClicked = (courseid) =>
+    {
+        this.setState({course_id:courseid});
+  
+        console.log(courseid)
+       
+  
+    }
+
+
+    deleteClicked= (courseid)=>
+    {
+        console.log("i am in delete"+courseid)
+        let url="http://localhost:5000/api/courses/"+ courseid
+        axios.delete(url).then((res) => {
+            console.info(res);
+        });
+
+        this.setState({delete:"1"})
+
+
+    }
+   
+    
     renderTableData(){
         return this.state.courses.map((course,index)=>{
-            var{id,course_id,course_name,instructor_name,offered_in_sem,is_compulsary,department}=course
-           if(is_compulsary==1)
-           {
-               is_compulsary='Yes'
-           }
-           else
-           {
-               is_compulsary='No'
-           }
+            var{id,course_id,course_name,instructor_name,offered_in_sem,is_compulsory,department}=course
+         
             return(
                 <tr className="my-table" key={id}>
                     <td> <a href="#" className="course-link">{id}</a></td>
@@ -99,7 +127,7 @@ class ListOfCourses extends Component {
                     <td> <a href="#" className="students-link" >{offered_in_sem}</a></td>
 
                     
-                    <td> <a href="#" className="students-link" >{is_compulsary}</a></td>
+                    <td> <a href="#" className="students-link" >{is_compulsory}</a></td>
                     <td> <a href="#" className="students-link" >{department}</a></td>
                     
                     
@@ -108,12 +136,12 @@ class ListOfCourses extends Component {
                         <div className="action-buttons">
                             
 
-                           <Link to='/courses/profile'> <button className="edit-button-course" >
+                           <Link to='/courses/profile'> <button className="edit-button-course" onClick={() => this.rowClicked(course.course_id)} >
                                 <FontAwesomeIcon icon={faEdit} />
                             </button>
                             </Link>
 
-                            <button className="delete-button">
+                            <button className="delete-button" onClick={()=>this.deleteClicked(course.course_id)}>
                                 <FontAwesomeIcon icon={faTrash} />
                             </button>
 

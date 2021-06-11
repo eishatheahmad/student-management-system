@@ -7,7 +7,7 @@ import App from './App'
 
 
 
-import ListOfStudents from './pages/StudentsList'
+
 
 ReactDOM.render(
  
