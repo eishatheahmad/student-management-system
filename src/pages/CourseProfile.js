@@ -13,8 +13,8 @@ class CourseProfile extends Component {
         this.state = { 
             id:'0',
             course_ID:'CS218',
-            course_name: 'Data Structures',
-            instructor_name: 'Dr. M Kashif',
+            name: 'Data Structures',
+            instructor: 'Dr. M Kashif',
             offered_in_sem:'Semester 4',
             
             department:'CS',
@@ -34,8 +34,8 @@ class CourseProfile extends Component {
         console.info(res);
 
         this.setState({course_ID:res.data.course_ID})
-        this.setState({course_name:res.data.course_name})
-        this.setState({instructor_name:res.data.instructor_name})
+        this.setState({name:res.data.name})
+        this.setState({instructor:res.data.instructor})
         this.setState({offered_in_sem:res.data.offered_in_sem})
         this.setState({department:res.data.department})
         this.setState({is_compulsory:res.data.is_compulsory})
@@ -57,9 +57,9 @@ class CourseProfile extends Component {
     {
 
         const updated_object={
-                                course_name:this.state.course_name,
-                                instructor_name:this.state.instructor_name,
-                                instructor_name:this.state.instructor_name,
+                                name:this.state.name,
+                                instructor:this.state.instructor,
+                                instructor:this.state.instructor,
                                 offered_in_sem:this.state.offered_in_sem,
                                 department:this.department,
                                 is_compulsory:this.is_compulsory
@@ -87,14 +87,14 @@ class CourseProfile extends Component {
         this.setState({course_ID:e.target.value})
     }
 
-    course_nameChanged=(e)=>
+    nameChanged=(e)=>
     {
-        this.setState({course_name:e.target.value})
+        this.setState({name:e.target.value})
     }
 
     instructorChanged=(e)=>
     {
-        this.setState({instructor_name:e.target.value})
+        this.setState({instructor:e.target.value})
     }
 
     departmentChanged=(e)=>
@@ -136,14 +136,14 @@ class CourseProfile extends Component {
        
                                <div className="inner-div">
                                    <h3 className="labels">COURSE NAME: </h3>
-                                   <p className="student-data-p">{this.state.course_name}</p>
+                                   <p className="student-data-p">{this.state.name}</p>
                                </div>
        
                             
        
                                <div className="inner-div">
                                    <h3 className="labels">INSTRUCTOR : </h3>
-                                   <p className="student-data-p">{this.state.instructor_name}</p>
+                                   <p className="student-data-p">{this.state.instructor}</p>
                                </div>
        
                                <div className="inner-div">
@@ -193,7 +193,7 @@ class CourseProfile extends Component {
                     <div>
                         <div className="inner-div">
                             <h3 className="labels">COURSE NAME: </h3>
-                            <input  className="input-fields" defaultValue={this.state.course_name} type="input" onChange={this.course_nameChanged.bind(this)}></input>
+                            <input  className="input-fields" defaultValue={this.state.name} type="input" onChange={this.nameChanged.bind(this)}></input>
                         </div>
                     </div>
 
@@ -202,7 +202,7 @@ class CourseProfile extends Component {
                     <div>
                         <div className="inner-div">
                             <h3 className="labels">INSTRUCTOR: </h3>
-                            <input  className="input-fields" defaultValue={this.state.instructor_name} type="text" onChange={this.instructorChanged.bind(this)}></input>
+                            <input  className="input-fields" defaultValue={this.state.instructor} type="text" onChange={this.instructorChanged.bind(this)}></input>
                         </div>
                     </div>
 

@@ -16,50 +16,50 @@ class ListOfCourses extends Component {
         this.state = {  
             courses:[
                 {
-                    id:1,
-                    course_id:"CS218",
-                    course_name:"Data Structures",
-                    instructor_name:"Dr. M kashif",
+                   
+                    course_ID:"CS218",
+                    name:"Data Structures",
+                    instructor:"Dr. M kashif",
                     offered_in_sem:4,
                     is_compulsory:'0',
                     department:"CS"
                 },
             
                 {
-                    id:2,
-                    course_id:"CS217",
-                    course_name:"Object Oriented Programming",
-                    instructor_name:"Prof. Ali Raheem",
+                   
+                    course_ID:"CS217",
+                    name:"Object Oriented Programming",
+                    instructor:"Prof. Ali Raheem",
                     offered_in_sem:4,
                     is_compulsory:'1',
                     department:"CS"
                 },
             
                 {
-                    id:3,
-                    course_id:"EE217",
-                    course_name:"Digital Logic Design",
-                    instructor_name:"Mr. Omer Ali",
+                    
+                    course_ID:"EE217",
+                    name:"Digital Logic Design",
+                    instructor:"Mr. Omer Ali",
                     offered_in_sem:4,
                     is_compulsory:'0',
                     department:"EE"
                 },
             
                 {
-                    id:4,
-                    course_id:"CS211",
-                    course_name:"Discrete Structures",
-                    instructor_name:"Dr. Mehmoona Raza",
+                    
+                    course_ID:"CS211",
+                    name:"Discrete Structures",
+                    instructor:"Dr. Mehmoona Raza",
                     offered_in_sem:4,
                     is_compulsory:'1',
                     department:"CS"
                 },
             
                 {
-                    id:5,
-                    course_id:"MT104",
-                    course_name:"Linear Algebra",
-                    instructor_name:"Dr. Bilal Tahir",
+                    
+                    course_ID:"MT104",
+                    name:"Linear Algebra",
+                    instructor:"Dr. Bilal Tahir",
                     offered_in_sem:4,
                     is_compulsory:'0',
                     department:"MT"
@@ -87,12 +87,18 @@ class ListOfCourses extends Component {
     componentDidMount() {
         axios.get("http://localhost:5000/api/courses").then((res) => {
           console.info(res);
+
+          let temp= this.state.courses.concat(res.data.data)
+          
+          
+         this.setState({courses:temp})
+         console.log(this.state.courses)
         });
       }
 
     rowClicked = (courseid) =>
     {
-        this.setState({course_id:courseid});
+        this.setState({course_ID:courseid});
   
         console.log(courseid)
        
@@ -116,14 +122,14 @@ class ListOfCourses extends Component {
     
     renderTableData(){
         return this.state.courses.map((course,index)=>{
-            var{id,course_id,course_name,instructor_name,offered_in_sem,is_compulsory,department}=course
+            var{course_ID,name,instructor,offered_in_sem,is_compulsory,department}=course
          
             return(
-                <tr className="my-table" key={id}>
-                    <td> <a href="#" className="course-link">{id}</a></td>
-                    <td> <a href="#" className="course-link">{course_id}</a></td>
-                    <td> <a href="#" className="course-link" >{course_name}</a></td>
-                    <td> <a href="#" className="students-link">{instructor_name}</a></td>
+                <tr className="my-table" key={course_ID}>
+                   
+                    <td> <a href="#" className="course-link">{course_ID}</a></td>
+                    <td> <a href="#" className="course-link" >{name}</a></td>
+                    <td> <a href="#" className="students-link">{instructor}</a></td>
                     <td> <a href="#" className="students-link" >{offered_in_sem}</a></td>
 
                     
@@ -136,12 +142,12 @@ class ListOfCourses extends Component {
                         <div className="action-buttons">
                             
 
-                           <Link to='/courses/profile'> <button className="edit-button-course" onClick={() => this.rowClicked(course.course_id)} >
+                           <Link to='/courses/profile'> <button className="edit-button-course" onClick={() => this.rowClicked(course.course_ID)} >
                                 <FontAwesomeIcon icon={faEdit} />
                             </button>
                             </Link>
 
-                            <button className="delete-button" onClick={()=>this.deleteClicked(course.course_id)}>
+                            <button className="delete-button" onClick={()=>this.deleteClicked(course.course_ID)}>
                                 <FontAwesomeIcon icon={faTrash} />
                             </button>
 

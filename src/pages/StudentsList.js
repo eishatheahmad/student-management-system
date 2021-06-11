@@ -16,119 +16,66 @@ class StudentsList extends Component {
     
     this.state = {
         row_click_id:'',
+        new_student_added:'',
 
         
       students: [
         {
-          id: 1,
-          student_roll: "19L-4116",
-          student_name: "Muaz Ali",
-          student_dob: "1999-06-08",
-          student_address: "221 B, Bakers Street, Lahore",
-          student_semester: 4,
-          student_warning: 0,
-          student_cgpa: 3.42,
+         
+          roll_number: "19L-4116",
+          name: "Muaz Ali",
+          dob: "1999-06-08",
+          address: "221 B, Bakers Street, Lahore",
+          semester: 4,
+          warnings: 0,
+          cgpa: 3.42,
         },
 
         {
-          id: 2,
-          student_roll: "19L-4006",
-          student_name: "Umair Mirza",
-          student_dob: "1998-10-08",
-          student_address: "164 B, Liberty Street, Lahore",
-          student_semester: 4,
-          student_warning: 1,
-          student_cgpa: 1.89,
+          
+          roll_number: "19L-4006",
+          name: "Umair Mirza",
+          dob: "1998-10-08",
+          address: "164 B, Liberty Street, Lahore",
+          semester: 4,
+          warnings: 1,
+          cgpa: 1.89,
         },
 
         {
-          id: 3,
-          student_roll: "19L-2236",
-          student_name: "Asad Imran",
-          student_dob: "1997-02-02",
-          student_address: "200 E, Pineapple Street, Lahore",
-          student_semester: 4,
-          student_warning: 0,
-          student_cgpa: 3.2,
+          
+          roll_number: "19L-2236",
+          name: "Asad Imran",
+          dob: "1997-02-02",
+          address: "200 E, Pineapple Street, Lahore",
+          semester: 4,
+          warnings: 0,
+          cgpa: 3.2,
         },
 
         {
-          id: 4,
-          student_roll: "19L-4232",
-          student_name: "Faiqah Shuaib",
-          student_dob: "1999-03-09",
-          student_address: "209 B, Banana Street, Lahore",
-          student_semester: 4,
-          student_warning: 0,
-          student_cgpa: 3.75,
+          
+          roll_number: "19L-4232",
+          name: "Faiqah Shuaib",
+          dob: "1999-03-09",
+          address: "209 B, Banana Street, Lahore",
+          semester: 4,
+          warnings: 0,
+          cgpa: 3.75,
         },
 
         {
-          id: 5,
-          student_roll: "19L-2760",
-          student_name: "Sameen Imran",
-          student_dob: "1999-07-08",
-          student_address: "21 B, Apricot Street, Lahore",
-          student_semester: 4,
-          student_warning: 0,
-          student_cgpa: 2.98,
+       
+          roll_number: "19L-2760",
+          name: "Sameen Imran",
+          dob: "1999-07-08",
+          address: "21 B, Apricot Street, Lahore",
+          semester: 4,
+          warnings: 0,
+          cgpa: 2.98,
         },
 
-        {
-          id: 6,
-          student_roll: "19L-1189",
-          student_name: "Omer Hassan",
-          student_dob: "1998-01-21",
-          student_address: "221 B, Apple Street, Lahore",
-          student_semester: 4,
-          student_warning: 0,
-          student_cgpa: 3.1,
-        },
-
-        {
-          id: 7,
-          student_roll: "19L-2760",
-          student_name: "Hadia Ishtiaq",
-          student_dob: "1999-05-16",
-          student_address: "83 C, Grapes Street, Lahore",
-          student_semester: 4,
-          student_warning: 0,
-          student_cgpa: 3.33,
-        },
-
-        {
-          id: 8,
-          student_roll: "19L-1022",
-          student_name: "Areeb Ahmed",
-          student_dob: "1998-02-01",
-          student_address: "34 D, Bakers Street,Lahore",
-          student_semester: 4,
-          student_warning: 0,
-          student_cgpa: 3.75,
-        },
-
-        {
-          id: 9,
-          student_roll: "19L-1223",
-          student_name: "Maida Tariq",
-          student_dob: "1999-03-08",
-          student_address: "24 E, Orange Street, Lahore",
-          student_semester: 4,
-          student_warning: 0,
-          student_cgpa: 3.52,
-        },
-
-        {
-          id: 10,
-          student_roll: "19L-2375",
-          student_name: "Humza Noor",
-          student_dob: "1997-11-04",
-          student_address: "190 D, Strawberry Street, Lahore",
-          student_semester: 4,
-          student_warning: 0,
-          student_cgpa: 3.24,
-          delete:''
-        },
+        
       ],
     };
 
@@ -138,7 +85,7 @@ class StudentsList extends Component {
   deleteClicked= (studentroll)=>
     {
         console.log("i am in delete"+studentroll)
-        let url="http://localhost:5000/api/courses/"+ studentroll
+        let url="http://localhost:5000/api/students/"+ studentroll
         axios.delete(url).then((res) => {
             console.info(res);
         });
@@ -160,7 +107,37 @@ class StudentsList extends Component {
   componentDidMount() {
     console.log("i am in get")
     axios.get("http://localhost:5000/api/students").then((res) => {
-      console.info(res);
+      console.info(res); //add the new student to studen[]
+    /*  const updated_object={
+    
+        id:this.state.students.length+1,
+        roll_number:res.data.roll_number,
+        name:res.data.name,
+        address:res.data.address,
+        dob:res.data.dob,
+        semester:res.data.semester,
+        warnings:res.data.warnings,
+        cgpa:res.data.cgpa,
+        
+        };*/
+        
+       
+        console.log("updated object")
+      
+        let date=String(res.data.data.dob)
+        console.log("date")
+        console.log(res.data.data.dob)
+
+        
+      
+        let temp= this.state.students.concat(res.data.data)
+        
+        
+       this.setState({students:temp})
+       console.log(this.state.students)
+
+
+        
     });
   }
 
@@ -175,56 +152,51 @@ class StudentsList extends Component {
  
   renderTableData() {
     return this.state.students.map((student, index) => {
-      const { id, student_name, student_roll, student_dob, student_address, student_semester, student_warning, student_cgpa } =
+      const { name, roll_number, dob, address, semester, warnings, cgpa } =
         student;
       return (
-        <tr className="my-table" key={id} data-item={student} >
+        <tr className="my-table"  data-item={student} >
+          
           <td>
             {" "}
             
-              {id}
-            
-          </td>
-          <td>
-            {" "}
-            
-              {student_roll}
+              {roll_number}
             
           </td>
           <td>
             {" "}
            
-              {student_name}
+              {name}
             
           </td>
           <td>
             {" "}
            
-              {student_dob}
+              {dob}
             
           </td>
           <td>
             {" "}
            
-              {student_address}
+              {address}
             
           </td>
           <td>
             {" "}
             
-              {student_semester}
+              {semester}
             
           </td>
           <td>
             {" "}
             
-              {student_warning}
+              {warnings}
             
           </td>
           <td>
             {" "}
             
-              {student_cgpa}
+              {cgpa}
             
           </td>
           
@@ -232,12 +204,12 @@ class StudentsList extends Component {
             <div className="action-buttons">
             
               <Link to="/students/profile">
-                <button classstudent_name="edit-button-student" onClick={() => this.rowClicked(student.student_roll)}>
+                <button classname="edit-button-student" onClick={() => this.rowClicked(student.roll_number)}>
                   <FontAwesomeIcon icon={faEdit} />
                 </button>
               </Link>
 
-              <button cclassName="delete-button" onClick={()=>this.deleteClicked(student.student_roll)}>
+              <button cclassName="delete-button" onClick={()=>this.deleteClicked(student.roll_number)}>
                 <FontAwesomeIcon icon={faTrash} />
               </button>
             </div>

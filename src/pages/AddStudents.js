@@ -17,13 +17,13 @@ class AddStudent extends Component {
         this.state = { 
             new_students:[],
             id:'',
-            student_roll:'',
-            student_name: '',
-            student_dob: '',
-            student_address:'',
-            student_semester:'',
-            student_warning:'',
-            student_cgpa:'',
+            roll_number:'',
+            name: '',
+            dob: '',
+            address:'',
+            semester:'',
+            warnings:'',
+            cgpa:'',
             status:'',
 
          }
@@ -39,7 +39,7 @@ class AddStudent extends Component {
 
         console.log(event.target.name)
         console.log(event.target.value)
-        console.log(this.state.student_cgpa)
+        console.log(this.state.cgpa)
         
         
     }
@@ -47,12 +47,13 @@ class AddStudent extends Component {
     addStudent(event)
     {
         const updated_object={
-            student_roll:this.state.student_roll,
-            student_name:this.state.student_name,
-            student_address:this.state.student_address,
-            student_semester:this.state.student_semester,
-            student_warning:this.state.student_warning,
-            student_cgpa:this.state.student_cgpa,
+            roll_number:this.state.roll_number,
+            name:this.state.name,
+            address:this.state.address,
+            dob:this.state.dob,
+            semester:this.state.semester,
+            warnings:this.state.warnings,
+            cgpa:this.state.cgpa,
             
             
 
@@ -62,7 +63,7 @@ class AddStudent extends Component {
         let url="http://localhost:5000/api/students/"
 
         axios.post(url,updated_object).then((res) => {
-            console.info(res);
+            console.log(res);
             this.setState({new_course:updated_object})
             console.log("i am in post of student")
             
@@ -88,7 +89,7 @@ class AddStudent extends Component {
                         <h5 className="help-text">Roll Number i.e. (17L-1234)</h5>
                         <div className="icon-div">
                             <BsIcons.BsPersonFill className="icons"></BsIcons.BsPersonFill>
-                            <input type="text" className="inputs" name="student_roll" placeholder="Enter roll number" 
+                            <input type="text" className="inputs" name="roll_number" placeholder="Enter roll number" 
                                 required onChange={this.onInputchange}>
 
                             </input>
@@ -97,7 +98,7 @@ class AddStudent extends Component {
                         <label className="labels">NAME</label>
                         <div className="icon-div">
                         <BiIcons.BiRename className="icons"></BiIcons.BiRename>
-                        <input type="text" className="inputs" name="student_name" placeholder="Enter full name" required
+                        <input type="text" className="inputs" name="name" placeholder="Enter full name" required
                             onChange={this.onInputchange}></input>
                         </div>
 
@@ -105,13 +106,13 @@ class AddStudent extends Component {
                         <label className="labels">DATE OF BIRTH</label>
                         <div className="icon-div">
                         <BiIcons.BiCalendar className="icons"></BiIcons.BiCalendar>
-                        <input type="date" className="inputs" name="student_dob" required onChange={this.onInputchange}></input>
+                        <input type="date" className="inputs" name="dob" required onChange={this.onInputchange}></input>
                         </div>
 
                         <label className="labels">ADDRESS</label>
                         <div className="icon-div">
                         <MdIcons.MdLocationCity className="icons"></MdIcons.MdLocationCity>
-                        <textarea className="inputs" name="student_address" placeholder="Enter address" required 
+                        <textarea className="inputs" name="address" placeholder="Enter address" required 
                         onChange={this.onInputchange}></textarea>
                         </div>
 
@@ -120,7 +121,7 @@ class AddStudent extends Component {
                         <div className="icon-div">
                         <AiIcons.AiOutlineNumber className="icons"></AiIcons.AiOutlineNumber>
                        
-                            <select name="student_semester" className="inputs-select" required onChange={this.onInputchange}>
+                            <select name="semester" className="inputs-select" required onChange={this.onInputchange}>
                                 <option value="" selected disabled hidden>Semester</option>
                                 <option id="semester" value="1">Semester 1</option>
                                 <option id="semester" value="2">Semester 2</option>
@@ -139,7 +140,7 @@ class AddStudent extends Component {
                         <div className="icon-div">
                         <ImIcons.ImWarning className="icons"></ImIcons.ImWarning>
                        
-                            <select name="student_warning" className="inputs-select" required onChange={this.onInputchange}>
+                            <select name="warnings" className="inputs-select" required onChange={this.onInputchange}>
                                 <option value="" selected disabled hidden>Select warning count</option>
                                 <option id="warning" value="0">0</option>
                                 <option id="warning" value="1">1</option>
@@ -152,7 +153,7 @@ class AddStudent extends Component {
                         <label className="labels">CGPA</label>
                         <div className="icon-div">
                         <ImIcons.ImCalculator className="icons"></ImIcons.ImCalculator>
-                        <input type="text" className="inputs" name="student_cgpa" placeholder="Enter CGPA" required onChange={this.onInputchange}></input>
+                        <input type="text" className="inputs" name="cgpa" placeholder="Enter CGPA" required onChange={this.onInputchange}></input>
                         </div>
                         
                         

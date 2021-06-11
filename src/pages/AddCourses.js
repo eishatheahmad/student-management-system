@@ -17,8 +17,8 @@ class AddCourse extends Component {
         this.state = {
             new_course:{},
             course_ID:'',
-            course_name:'',
-            instructor_name:'',
+            name:'',
+            instructor:'',
             is_compulsory:'',
             department:'',
             offered_in_sem:'',
@@ -36,8 +36,8 @@ class AddCourse extends Component {
         
         const updated_object={
             course_ID:this.state.course_ID,
-            course_name:this.state.course_name,
-            instructor_name:this.state.instructor_name,
+            name:this.state.name,
+            instructor:this.state.instructor,
            
             department:this.state.department,
             is_compulsory:this.state.is_compulsory,
@@ -57,6 +57,7 @@ class AddCourse extends Component {
          });
          console.log("i am in out of post of course")
          event.preventDefault();
+         console.log(updated_object)
        
     }
 
@@ -90,13 +91,13 @@ class AddCourse extends Component {
                         <label className="labels">COURSE NAME</label>
                         <div className="icon-div">
                         <BiIcons.BiRename className="icons"></BiIcons.BiRename>
-                        <input type="text" className="inputs" name="course_name" placeholder="Enter full course name " required onChange={this.onInputchange}></input>
+                        <input type="text" className="inputs" name="name" placeholder="Enter full course name " required onChange={this.onInputchange}></input>
                         </div>
 
                         <label className="labels">INSTRUCTOR NAME</label>
                         <div className="icon-div">
                         <FaIcons.FaChalkboardTeacher className="icons"></FaIcons.FaChalkboardTeacher>
-                        <input type="text" className="inputs" name="instructor_name" placeholder="Enter Instructor name " required onChange={this.onInputchange}></input>
+                        <input type="text" className="inputs" name="instructor" placeholder="Enter Instructor name " required onChange={this.onInputchange}></input>
                         </div>
 
 
