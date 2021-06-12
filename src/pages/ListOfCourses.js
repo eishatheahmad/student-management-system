@@ -13,10 +13,10 @@ import axios from "axios";
 class ListOfCourses extends Component {
     constructor(props) {
         super(props);
-        this.state = {  
+        this.state = {
             courses:[
                 {
-                   
+
                     course_ID:"CS218",
                     name:"Data Structures",
                     instructor:"Dr. M kashif",
@@ -24,9 +24,9 @@ class ListOfCourses extends Component {
                     is_compulsory:'0',
                     department:"CS"
                 },
-            
+
                 {
-                   
+
                     course_ID:"CS217",
                     name:"Object Oriented Programming",
                     instructor:"Prof. Ali Raheem",
@@ -34,9 +34,9 @@ class ListOfCourses extends Component {
                     is_compulsory:'1',
                     department:"CS"
                 },
-            
+
                 {
-                    
+
                     course_ID:"EE217",
                     name:"Digital Logic Design",
                     instructor:"Mr. Omer Ali",
@@ -44,9 +44,9 @@ class ListOfCourses extends Component {
                     is_compulsory:'0',
                     department:"EE"
                 },
-            
+
                 {
-                    
+
                     course_ID:"CS211",
                     name:"Discrete Structures",
                     instructor:"Dr. Mehmoona Raza",
@@ -54,9 +54,9 @@ class ListOfCourses extends Component {
                     is_compulsory:'1',
                     department:"CS"
                 },
-            
+
                 {
-                    
+
                     course_ID:"MT104",
                     name:"Linear Algebra",
                     instructor:"Dr. Bilal Tahir",
@@ -78,7 +78,7 @@ class ListOfCourses extends Component {
         let key1='Action'
         header.push(key1)
         return header.map((key,index)=>{
-          
+
             return <th key={index}>{key.toUpperCase()}</th>
         })
     }
@@ -88,21 +88,19 @@ class ListOfCourses extends Component {
         axios.get("http://localhost:5000/api/courses").then((res) => {
           console.info(res);
 
-          let temp= this.state.courses.concat(res.data.data)
-          
-          
-         this.setState({courses:temp})
+         this.setState({courses:res.data.data})
          console.log(this.state.courses)
+
         });
       }
 
     rowClicked = (courseid) =>
     {
         this.setState({course_ID:courseid});
-  
+
         console.log(courseid)
-       
-  
+
+
     }
 
 
@@ -114,54 +112,64 @@ class ListOfCourses extends Component {
             console.info(res);
         });
 
-        this.setState({delete:"1"})
+        axios.get("http://localhost:5000/api/courses").then((res) => {
+            console.info(res); //add the new student to studen[]
+
+            this.setState({students:res.data.data})
+            console.log(this.state.students)
+
+          });
+
+          window.location.reload();
 
 
     }
-   
-    
+
+
     renderTableData(){
         return this.state.courses.map((course,index)=>{
             var{course_ID,name,instructor,offered_in_sem,is_compulsory,department}=course
-         
+
             return(
                 <tr className="my-table" key={course_ID}>
-                   
+
                     <td> <a href="#" className="course-link">{course_ID}</a></td>
                     <td> <a href="#" className="course-link" >{name}</a></td>
                     <td> <a href="#" className="students-link">{instructor}</a></td>
                     <td> <a href="#" className="students-link" >{offered_in_sem}</a></td>
 
-                    
+
                     <td> <a href="#" className="students-link" >{is_compulsory}</a></td>
                     <td> <a href="#" className="students-link" >{department}</a></td>
-                    
-                    
-                    <td>
-                        
-                        <div className="action-buttons">
-                            
 
-                           <Link to='/courses/profile'> <button className="edit-button-course" onClick={() => this.rowClicked(course.course_ID)} >
+
+                    <td>
+
+                        <div className="action-buttons">
+
+
+                        <Link to={{pathname:"/courses/profile/"+course.course_ID, state:{course_ID:course.course_ID}}}>
+                            <button classname="edit-button-student" onClick={() => this.rowClicked(course.course_ID)}>
+
                                 <FontAwesomeIcon icon={faEdit} />
                             </button>
-                            </Link>
+                        </Link>
 
                             <button className="delete-button" onClick={()=>this.deleteClicked(course.course_ID)}>
                                 <FontAwesomeIcon icon={faTrash} />
                             </button>
 
                         </div>
-                        
+
                     </td>
-                    
+
                 </tr>
             )
         })
     }
 
-    render() { 
-        return ( 
+    render() {
+        return (
             <div>
                 <h1>Courses List</h1>
                 <table id='courses'>
@@ -174,5 +182,5 @@ class ListOfCourses extends Component {
          );
     }
 }
- 
+
 export default withRouter(ListOfCourses);

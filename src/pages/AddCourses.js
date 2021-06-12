@@ -8,6 +8,9 @@ import * as AiIcons from "react-icons/ai"
 import * as FaIcons from "react-icons/fa"
 import axios from 'axios';
 
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
+
 
 
 
@@ -22,7 +25,7 @@ class AddCourse extends Component {
             is_compulsory:'',
             department:'',
             offered_in_sem:'',
-            
+
             temp:{}
 
           }
@@ -33,16 +36,16 @@ class AddCourse extends Component {
 
     addNewCourse(event)
     {
-        
+
         const updated_object={
             course_ID:this.state.course_ID,
             name:this.state.name,
             instructor:this.state.instructor,
-           
+
             department:this.state.department,
             is_compulsory:this.state.is_compulsory,
             offered_in_sem:this.state.offered_in_sem,
-            
+
 
             };
             console.log(updated_object)
@@ -53,17 +56,17 @@ class AddCourse extends Component {
             console.info(res);
             this.setState({new_course:updated_object})
             console.log("i am in post of course")
-            
+
          });
          console.log("i am in out of post of course")
-         event.preventDefault();
+
          console.log(updated_object)
-       
+
     }
 
 
     onInputchange(event) {
-        
+
         this.setState({
           [event.target.name]: event.target.value
         });
@@ -71,18 +74,18 @@ class AddCourse extends Component {
         console.log(event.target.name)
         console.log(event.target.value)
         console.log(this.state.is_compulsory)
-        
-        
+
+
     }
-    render() { 
-        return ( 
+    render() {
+        return (
             <div className="form-outer-div">
                 <h1>Add New Course</h1>
                 <h2>Please fill the form below to add new course</h2>
                <div className="form-inner-div">
                     <form class="my-form">
                         <label className="labels">COURSE ID</label>
-            
+
                         <div className="icon-div">
                         <BiIcons.BiBookAdd className="icons"></BiIcons.BiBookAdd>
                         <input type="input" className="inputs" name="course_ID" placeholder="Enter Course ID i.e. CS000" required  onChange={this.onInputchange}></input>
@@ -104,22 +107,22 @@ class AddCourse extends Component {
                         <label className="labels">COMPULSORY</label>
                         <div className="icon-div">
                         <AiIcons.AiFillCheckSquare className="icons"></AiIcons.AiFillCheckSquare>
-                       
+
                             <select name="is_compulsory" className="inputs-select" required onChange={this.onInputchange}>
                                 <option value="" selected disabled hidden>Select option</option>
                                 <option id="compulsory" value='0'>Yes (for core courses)</option>
                                 <option id="compulsory" value='1'>No (for elective courses)</option>
-                                
-                               
+
+
                             </select>
                         </div>
 
-                        
-                        
+
+
                         <label className="labels">FOR SEMESTER</label>
                         <div className="icon-div">
                         <AiIcons.AiOutlineNumber className="icons"></AiIcons.AiOutlineNumber>
-                       
+
                             <select name="offered_in_sem" className="inputs-select" required onChange={this.onInputchange}>
                                 <option value="" selected disabled hidden>Semester</option>
                                 <option id="semester" value="1">Semester 1</option>
@@ -135,28 +138,29 @@ class AddCourse extends Component {
 
 
 
-                       
+
 
 
                         <label className="labels">DEPARTMENT</label>
                         <div className="icon-div">
                         <BiIcons.BiBuilding className="icons"></BiIcons.BiBuilding >
-                       
+
                             <select name="department" className="inputs-select" required onChange={this.onInputchange}>
                                 <option value="" selected disabled hidden>Select Department</option>
                                 <option id="dept" value="CS">CS</option>
                                 <option id="dept" value="EE">EE</option>
                                 <option id="dept" value="CV">CV</option>
                                 <option id="dept" value="MG">MG</option>
-                                
-                               
+
+
                             </select>
                         </div>
 
-                       
-                        
 
-                        <button className="add-button" onClick={this.addNewCourse.bind(this)}>Add Course</button>
+
+                        <Link to="/courses" onClick={()=>setTimeout(()=>window.location.reload(), 500)}>
+                            <button className="add-button" onClick={this.addNewCourse.bind(this)}>Add Course</button>
+                        </Link>
 
                     </form>
 
@@ -166,5 +170,5 @@ class AddCourse extends Component {
          );
     }
 }
- 
+
 export default AddCourse;

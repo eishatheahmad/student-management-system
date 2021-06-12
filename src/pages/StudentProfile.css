@@ -1,11 +1,11 @@
 .outer-div
 {
-    
+
     display: flex;
     flex-direction: column;
-    
+
     border: 2px  blue;
-    
+
     align-self: center;
     width: 500px;
     margin-left: 35%;
@@ -13,28 +13,37 @@
 
     margin-top: 80px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
+
     padding: 10px 10px;
-    
+
     color: black;
     background-color: rgb(255, 255, 255);
-    
-    
+
+
 }
 
 .table-header
 {
-    
+
     border: 1px solid black;
     padding: 8px;
-    
+
+}
+
+.add-course-button
+{
+    padding: 8px;
+    border: 1px  black;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 
 
 .table-courses
 {
-    
+
     margin-top: 40px;
     border: 0.5px solid black;
     width: 100%;
@@ -42,8 +51,8 @@
 
     text-align: center;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    
-   
+
+
     width: 100%;
 }
 
@@ -54,13 +63,13 @@
     align-self:flex-end;
     border-radius: 3px;
     border: none;
-    
+
 }
 
 .edit-button:hover
 {
   color: yellow;
-    
+
 }
 .input-fields
 {
@@ -74,7 +83,7 @@
 
 .save-button
 {
-    
+
     align-self:flex-end;
     color: whitesmoke;
     background-color: green;
@@ -83,29 +92,29 @@
     height: 30px;
     border-radius: 3px;
     border: none;
-    
+
 }
 
 .save-button:hover
 {
-    color: yellow;   
+    color: yellow;
 }
 
 .student-data-p
 {
-  
+
    margin-top: 12px;
    width: 200px;
    text-align: left;
    padding-left: 10px;
    cursor: pointer;
-   
+
 }
 
 .inner-div:hover
 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-   
+
     cursor: pointer;
 }
 
@@ -121,6 +130,6 @@
     padding-right: 40px;
     margin-top: 20px;
     margin-bottom: 20px;
-  
+
     color: black;
 }

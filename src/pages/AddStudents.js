@@ -7,6 +7,8 @@ import * as MdIcons from "react-icons/md"
 import * as ImIcons from "react-icons/im"
 
 import axios from 'axios';
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
 
 
@@ -14,7 +16,7 @@ import axios from 'axios';
 class AddStudent extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             new_students:[],
             id:'',
             roll_number:'',
@@ -32,7 +34,7 @@ class AddStudent extends Component {
     }
 
     onInputchange(event) {
-        
+
         this.setState({
           [event.target.name]: event.target.value
         });
@@ -40,8 +42,8 @@ class AddStudent extends Component {
         console.log(event.target.name)
         console.log(event.target.value)
         console.log(this.state.cgpa)
-        
-        
+
+
     }
 
     addStudent(event)
@@ -50,12 +52,12 @@ class AddStudent extends Component {
             roll_number:this.state.roll_number,
             name:this.state.name,
             address:this.state.address,
-            dob:this.state.dob,
+            dob:new Date(this.state.dob).toJSON().slice(0, 10),
             semester:this.state.semester,
             warnings:this.state.warnings,
             cgpa:this.state.cgpa,
-            
-            
+
+
 
             };
             console.log(updated_object)
@@ -66,20 +68,17 @@ class AddStudent extends Component {
             console.log(res);
             this.setState({new_course:updated_object})
             console.log("i am in post of student")
-            
+
          });
          console.log("i am in out of post of student")
-         event.preventDefault();
 
-       
 
-       
     }
 
-    
-    render() { 
+
+    render() {
         console.log(this.state.new_students)
-        return ( 
+        return (
             <div className="form-outer-div">
                 <h1>Add New Student</h1>
                 <h2>Please fill the form below to add new student</h2>
@@ -89,7 +88,7 @@ class AddStudent extends Component {
                         <h5 className="help-text">Roll Number i.e. (17L-1234)</h5>
                         <div className="icon-div">
                             <BsIcons.BsPersonFill className="icons"></BsIcons.BsPersonFill>
-                            <input type="text" className="inputs" name="roll_number" placeholder="Enter roll number" 
+                            <input type="text" className="inputs" name="roll_number" placeholder="Enter roll number"
                                 required onChange={this.onInputchange}>
 
                             </input>
@@ -112,7 +111,7 @@ class AddStudent extends Component {
                         <label className="labels">ADDRESS</label>
                         <div className="icon-div">
                         <MdIcons.MdLocationCity className="icons"></MdIcons.MdLocationCity>
-                        <textarea className="inputs" name="address" placeholder="Enter address" required 
+                        <textarea className="inputs" name="address" placeholder="Enter address" required
                         onChange={this.onInputchange}></textarea>
                         </div>
 
@@ -120,7 +119,7 @@ class AddStudent extends Component {
                         <label className="labels">SEMESTER</label>
                         <div className="icon-div">
                         <AiIcons.AiOutlineNumber className="icons"></AiIcons.AiOutlineNumber>
-                       
+
                             <select name="semester" className="inputs-select" required onChange={this.onInputchange}>
                                 <option value="" selected disabled hidden>Semester</option>
                                 <option id="semester" value="1">Semester 1</option>
@@ -139,14 +138,14 @@ class AddStudent extends Component {
                         <label className="labels">WARING COUNT</label>
                         <div className="icon-div">
                         <ImIcons.ImWarning className="icons"></ImIcons.ImWarning>
-                       
+
                             <select name="warnings" className="inputs-select" required onChange={this.onInputchange}>
                                 <option value="" selected disabled hidden>Select warning count</option>
                                 <option id="warning" value="0">0</option>
                                 <option id="warning" value="1">1</option>
                                 <option id="warning" value="2">2</option>
                                 <option id="warning" value="3">3</option>
-                               
+
                             </select>
                         </div>
 
@@ -155,10 +154,12 @@ class AddStudent extends Component {
                         <ImIcons.ImCalculator className="icons"></ImIcons.ImCalculator>
                         <input type="text" className="inputs" name="cgpa" placeholder="Enter CGPA" required onChange={this.onInputchange}></input>
                         </div>
-                        
-                        
 
-                        <button className="add-button" onClick={this.addStudent.bind(this)}>Add Student</button>
+
+
+                        <Link to="/students " onClick={()=>setTimeout(()=>window.location.reload(), 500)}>
+                            <button className="add-button" onClick={this.addStudent.bind(this)}>Add Student</button>
+                        </Link>
 
                     </form>
 
@@ -167,9 +168,9 @@ class AddStudent extends Component {
             </div>
          );
     }
-    
+
 }
- 
-export default AddStudent;
+
+export default withRouter(AddStudent);
 
 //roll number, name , dob, address, semester, warning, cgpa
