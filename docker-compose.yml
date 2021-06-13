@@ -1,5 +1,14 @@
 version: "3.1"
 services:
+  frontend:
+    image: ammartahircs/student-management-frontend:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "backend"
+      - "db"
+    expose:
+      - "3000"
   backend:
     image: ammartahircs/student-management-backend:latest
     ports:
