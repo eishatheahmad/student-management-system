@@ -8,7 +8,6 @@ import * as FaIcons from "react-icons/fa";
 import axios from "axios";
 
 import { Link } from "react-router-dom";
-import { withRouter } from "react-router";
 
 class AddCourse extends Component {
   constructor(props) {
