@@ -91,17 +91,24 @@ class StudentProfile extends Component {
     window.location.reload();
   }
 
-  postCourse() {
-    let url2 =
-      "http://localhost:5000/api/studentCourses/" +
-      this.state.student.roll_number;
-    axios.get(url2).then((res) => {
-      console.info(res);
+  postCourse()
+  {
+      let url = "http://localhost:5000/api/studentCourses/";
+      axios.post(url, this.state.new_course).then((res) => {
+          console.log(res);
 
-      this.setState({ courses: res.data.data });
-    });
+       });
 
-    window.location.reload();
+      let url2 = "http://localhost:5000/api/studentCourses/"+ this.state.student.roll_number;
+      axios.get(url2).then((res) => {
+          console.info(res);
+
+          this.setState({courses:res.data.data})
+
+      });
+
+      window.location.reload();
+
   }
 
   canEdit() {
