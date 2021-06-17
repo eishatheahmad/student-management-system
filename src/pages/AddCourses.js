@@ -38,7 +38,7 @@ class AddCourse extends Component {
       offered_in_sem: this.state.offered_in_sem,
     };
 
-    let url = "http://localhost:5000/api/courses/";
+    let url = `${process.env.URL}/${process.env.PORT}` + "/api/courses/";
 
     axios.post(url, updated_object).then((res) => {
       console.info(res);

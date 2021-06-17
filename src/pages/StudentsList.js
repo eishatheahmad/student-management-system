@@ -23,12 +23,12 @@ class StudentsList extends Component {
   }
 
   deleteClicked(studentroll) {
-    let url = "http://localhost:5000/api/students/" + studentroll;
+    let url = `${process.env.URL}/${process.env.PORT}` + "/api/students/" + studentroll;
     axios.delete(url).then((res) => {
       console.info(res);
     });
 
-    axios.get("http://localhost:5000/api/students").then((res) => {
+    axios.get(`${process.env.URL}/${process.env.PORT}` + "/api/students").then((res) => {
       console.info(res); //add the new student to studen[]
 
       this.setState({ students: res.data.data });
@@ -47,7 +47,7 @@ class StudentsList extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/api/students").then((res) => {
+    axios.get(`${process.env.URL}/${process.env.PORT}` + "/api/students").then((res) => {
       console.info(res); //add the new student to studen[]
 
       this.setState({ students: res.data.data });
