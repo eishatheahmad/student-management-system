@@ -46,7 +46,8 @@ class AddStudent extends Component {
       cgpa: this.state.cgpa,
     };
 
-    let url = `${process.env.URL}/${process.env.PORT}` + "/api/students/";
+    let url =
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` + "/api/students/";
 
     axios.post(url, updated_object).then((res) => {
       this.setState({ new_course: updated_object });

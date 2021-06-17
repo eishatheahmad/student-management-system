@@ -28,11 +28,13 @@ class ListOfCourses extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${process.env.URL}/${process.env.PORT}` + "/api/courses").then((res) => {
-      console.info(res);
+    axios
+      .get(`${window._env_.URL}/${window._env_.BACKEND_PORT}` + "/api/courses")
+      .then((res) => {
+        console.info(res);
 
-      this.setState({ courses: res.data.data });
-    });
+        this.setState({ courses: res.data.data });
+      });
   }
 
   rowClicked = (courseid) => {
@@ -40,16 +42,21 @@ class ListOfCourses extends Component {
   };
 
   deleteClicked = (courseid) => {
-    let url = `${process.env.URL}/${process.env.PORT}` + "/api/courses/" + courseid;
+    let url =
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/courses/" +
+      courseid;
     axios.delete(url).then((res) => {
       console.info(res);
     });
 
-    axios.get(`${process.env.URL}/${process.env.PORT}` + "/api/courses").then((res) => {
-      console.info(res); //add the new student to studen[]
+    axios
+      .get(`${window._env_.URL}/${window._env_.BACKEND_PORT}` + "/api/courses")
+      .then((res) => {
+        console.info(res); //add the new student to studen[]
 
-      this.setState({ students: res.data.data });
-    });
+        this.setState({ students: res.data.data });
+      });
 
     window.location.reload();
   };

@@ -45,7 +45,10 @@ class StudentProfile extends Component {
     const { roll_number } = this.props.location.state;
 
     // fetch student info
-    let url = `${process.env.URL}/${process.env.PORT}` + "/api/students/" + roll_number;
+    let url =
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/students/" +
+      roll_number;
     axios.get(url).then((res) => {
       let temp = res.data.data[0];
 
@@ -53,7 +56,10 @@ class StudentProfile extends Component {
     });
 
     // fetch student's courses
-    let url2 = `${process.env.URL}/${process.env.PORT}` + "/api/studentCourses/" + roll_number;
+    let url2 =
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/studentCourses/" +
+      roll_number;
     axios.get(url2).then((res) => {
       console.info(res);
 
@@ -61,7 +67,10 @@ class StudentProfile extends Component {
     });
 
     // fetch all courses
-    let url3 = `${process.env.URL}/${process.env.PORT}` + "/api/studentCourses/" + roll_number;
+    let url3 =
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/studentCourses/" +
+      roll_number;
     axios.get(url3).then((res) => {
       console.info(res);
 
@@ -71,7 +80,8 @@ class StudentProfile extends Component {
 
   deleteCourse(courseid) {
     let url =
-    `${process.env.URL}/${process.env.PORT}` + "/api/studentCourses/" +
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/studentCourses/" +
       this.state.student.roll_number +
       "/" +
       courseid;
@@ -80,7 +90,8 @@ class StudentProfile extends Component {
     });
 
     let url2 =
-    `${process.env.URL}/${process.env.PORT}` + "/api/studentCourses/" +
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/studentCourses/" +
       this.state.student.roll_number;
     axios.get(url2).then((res) => {
       console.info(res);
@@ -91,24 +102,25 @@ class StudentProfile extends Component {
     window.location.reload();
   }
 
-  postCourse()
-  {
-      let url = `${process.env.URL}/${process.env.PORT}` + "/api/studentCourses/";
-      axios.post(url, this.state.new_course).then((res) => {
-          console.log(res);
+  postCourse() {
+    let url =
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/studentCourses/";
+    axios.post(url, this.state.new_course).then((res) => {
+      console.log(res);
+    });
 
-       });
+    let url2 =
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/studentCourses/" +
+      this.state.student.roll_number;
+    axios.get(url2).then((res) => {
+      console.info(res);
 
-      let url2 = `${process.env.URL}/${process.env.PORT}` + "/api/studentCourses/"+ this.state.student.roll_number;
-      axios.get(url2).then((res) => {
-          console.info(res);
+      this.setState({ courses: res.data.data });
+    });
 
-          this.setState({courses:res.data.data})
-
-      });
-
-      window.location.reload();
-
+    window.location.reload();
   }
 
   canEdit() {
@@ -126,7 +138,9 @@ class StudentProfile extends Component {
     };
 
     let url =
-    `${process.env.URL}/${process.env.PORT}` + "/api/students/" + this.state.student.roll_number;
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/students/" +
+      this.state.student.roll_number;
 
     axios.put(url, updated_object).then((res) => {
       console.info(res);

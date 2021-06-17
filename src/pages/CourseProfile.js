@@ -29,7 +29,10 @@ class CourseProfile extends Component {
   componentDidMount() {
     const { course_ID } = this.props.location.state;
 
-    let url = `${process.env.URL}/${process.env.PORT}` + "/api/courses/" + course_ID;
+    let url =
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/courses/" +
+      course_ID;
     axios.get(url).then((res) => {
       console.info(res);
 
@@ -62,7 +65,9 @@ class CourseProfile extends Component {
     };
 
     let url =
-    `${process.env.URL}/${process.env.PORT}` + "/api/courses/" + this.state.course.course_ID;
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/courses/" +
+      this.state.course.course_ID;
 
     axios.put(url, updated_object).then((res) => {
       console.info(res);
@@ -72,7 +77,9 @@ class CourseProfile extends Component {
     this.setState({ is_edited: false });
 
     let url1 =
-    `${process.env.URL}/${process.env.PORT}` + "/api/courses/" + this.state.course.course_ID;
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/courses/" +
+      this.state.course.course_ID;
     axios.get(url1).then((res) => {
       console.info(res);
 

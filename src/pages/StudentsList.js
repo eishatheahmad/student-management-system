@@ -23,16 +23,21 @@ class StudentsList extends Component {
   }
 
   deleteClicked(studentroll) {
-    let url = `${process.env.URL}/${process.env.PORT}` + "/api/students/" + studentroll;
+    let url =
+      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      "/api/students/" +
+      studentroll;
     axios.delete(url).then((res) => {
       console.info(res);
     });
 
-    axios.get(`${process.env.URL}/${process.env.PORT}` + "/api/students").then((res) => {
-      console.info(res); //add the new student to studen[]
+    axios
+      .get(`${window._env_.URL}/${window._env_.BACKEND_PORT}` + "/api/students")
+      .then((res) => {
+        console.info(res); //add the new student to studen[]
 
-      this.setState({ students: res.data.data });
-    });
+        this.setState({ students: res.data.data });
+      });
 
     window.location.reload();
   }
@@ -47,11 +52,13 @@ class StudentsList extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${process.env.URL}/${process.env.PORT}` + "/api/students").then((res) => {
-      console.info(res); //add the new student to studen[]
+    axios
+      .get(`${window._env_.URL}/${window._env_.BACKEND_PORT}` + "/api/students")
+      .then((res) => {
+        console.info(res); //add the new student to studen[]
 
-      this.setState({ students: res.data.data });
-    });
+        this.setState({ students: res.data.data });
+      });
   }
 
   rowClicked = (rollnum) => {
