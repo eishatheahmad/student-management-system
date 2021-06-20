@@ -28,7 +28,7 @@ spec:
           name: frontend
           env:
           - name: URL
-            value: "107.21.196.221"
+            value: "http://PLACE_HOLDER"
           - name: BACKEND_PORT
             value: "5000"
           ports:
