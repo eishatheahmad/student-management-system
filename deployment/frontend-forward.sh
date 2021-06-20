@@ -1,0 +1,1 @@
+kubectl port-forward --address=0.0.0.0 service/frontend 3000:80

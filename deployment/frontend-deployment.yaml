@@ -26,8 +26,13 @@ spec:
       containers:
         - image: ammartahircs/student-management-frontend:latest
           name: frontend
+          env:
+          - name: URL
+            value: "107.21.196.221"
+          - name: BACKEND_PORT
+            value: "5000"
           ports:
-            - containerPort: 3000
+            - containerPort: 80
           resources: {}
       restartPolicy: Always
 status: {}

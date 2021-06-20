@@ -1,0 +1,1 @@
+kubectl port-forward --address=0.0.0.0 service/backend 5000:5000
