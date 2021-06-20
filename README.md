@@ -78,7 +78,7 @@ Clone the repo
 ## Usage
 
 ### How to run 
-There are two ways to run our application. Please ensure that you have the prerequisites installed and ready to use. Then the repository from the link given above.
+There are two ways to run our application. Please ensure that you have the prerequisites installed and ready to use. Then copy the repository from the link given above.
 #### Cloud Deployment on Amazon EC2 instance
 * `SSH` into your cloud instance.
 * Install `minikub` and `kubectl` if you haven't already.
@@ -93,7 +93,7 @@ There are two ways to run our application. Please ensure that you have the prere
 * Install `docker-compose`.
 *  Clone this repository `git clone https://github.com/eishatheahmad/student-management-system.git`.
 *  Execute `docker-compose up` in terminal.
-*  Access application on `http://localhost:3000`.
+*  Access application on `http://localhost:80`.
 
 
 
