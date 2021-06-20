@@ -30,7 +30,7 @@ class CourseProfile extends Component {
     const { course_ID } = this.props.location.state;
 
     let url =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/courses/" +
       course_ID;
     axios.get(url).then((res) => {
@@ -65,7 +65,7 @@ class CourseProfile extends Component {
     };
 
     let url =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/courses/" +
       this.state.course.course_ID;
 
@@ -77,7 +77,7 @@ class CourseProfile extends Component {
     this.setState({ is_edited: false });
 
     let url1 =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/courses/" +
       this.state.course.course_ID;
     axios.get(url1).then((res) => {

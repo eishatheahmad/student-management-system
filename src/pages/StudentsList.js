@@ -11,6 +11,7 @@ import axios from "axios";
 class StudentsList extends Component {
   constructor(props) {
     super(props);
+    console.info(window._env_.URL);
 
     this.state = {
       row_click_id: "",
@@ -24,7 +25,7 @@ class StudentsList extends Component {
 
   deleteClicked(studentroll) {
     let url =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/students/" +
       studentroll;
     axios.delete(url).then((res) => {
@@ -32,7 +33,7 @@ class StudentsList extends Component {
     });
 
     axios
-      .get(`${window._env_.URL}/${window._env_.BACKEND_PORT}` + "/api/students")
+      .get(`${window._env_.URL}:${window._env_.BACKEND_PORT}` + "/api/students")
       .then((res) => {
         console.info(res); //add the new student to studen[]
 
@@ -53,7 +54,7 @@ class StudentsList extends Component {
 
   componentDidMount() {
     axios
-      .get(`${window._env_.URL}/${window._env_.BACKEND_PORT}` + "/api/students")
+      .get(`${window._env_.URL}:${window._env_.BACKEND_PORT}` + "/api/students")
       .then((res) => {
         console.info(res); //add the new student to studen[]
 

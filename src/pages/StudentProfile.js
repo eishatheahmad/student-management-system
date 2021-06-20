@@ -46,7 +46,7 @@ class StudentProfile extends Component {
 
     // fetch student info
     let url =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/students/" +
       roll_number;
     axios.get(url).then((res) => {
@@ -57,7 +57,7 @@ class StudentProfile extends Component {
 
     // fetch student's courses
     let url2 =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/studentCourses/" +
       roll_number;
     axios.get(url2).then((res) => {
@@ -68,7 +68,7 @@ class StudentProfile extends Component {
 
     // fetch all courses
     let url3 =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/studentCourses/" +
       roll_number;
     axios.get(url3).then((res) => {
@@ -80,7 +80,7 @@ class StudentProfile extends Component {
 
   deleteCourse(courseid) {
     let url =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/studentCourses/" +
       this.state.student.roll_number +
       "/" +
@@ -90,7 +90,7 @@ class StudentProfile extends Component {
     });
 
     let url2 =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/studentCourses/" +
       this.state.student.roll_number;
     axios.get(url2).then((res) => {
@@ -104,14 +104,14 @@ class StudentProfile extends Component {
 
   postCourse() {
     let url =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/studentCourses/";
     axios.post(url, this.state.new_course).then((res) => {
       console.log(res);
     });
 
     let url2 =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/studentCourses/" +
       this.state.student.roll_number;
     axios.get(url2).then((res) => {
@@ -138,7 +138,7 @@ class StudentProfile extends Component {
     };
 
     let url =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/students/" +
       this.state.student.roll_number;
 

@@ -29,7 +29,7 @@ class ListOfCourses extends Component {
 
   componentDidMount() {
     axios
-      .get(`${window._env_.URL}/${window._env_.BACKEND_PORT}` + "/api/courses")
+      .get(`${window._env_.URL}:${window._env_.BACKEND_PORT}` + "/api/courses")
       .then((res) => {
         console.info(res);
 
@@ -43,7 +43,7 @@ class ListOfCourses extends Component {
 
   deleteClicked = (courseid) => {
     let url =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` +
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` +
       "/api/courses/" +
       courseid;
     axios.delete(url).then((res) => {
@@ -51,7 +51,7 @@ class ListOfCourses extends Component {
     });
 
     axios
-      .get(`${window._env_.URL}/${window._env_.BACKEND_PORT}` + "/api/courses")
+      .get(`${window._env_.URL}:${window._env_.BACKEND_PORT}` + "/api/courses")
       .then((res) => {
         console.info(res); //add the new student to studen[]
 

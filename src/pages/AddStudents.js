@@ -47,7 +47,7 @@ class AddStudent extends Component {
     };
 
     let url =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` + "/api/students/";
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` + "/api/students/";
 
     axios.post(url, updated_object).then((res) => {
       this.setState({ new_course: updated_object });

@@ -39,7 +39,7 @@ class AddCourse extends Component {
     };
 
     let url =
-      `${window._env_.URL}/${window._env_.BACKEND_PORT}` + "/api/courses/";
+      `${window._env_.URL}:${window._env_.BACKEND_PORT}` + "/api/courses/";
 
     axios.post(url, updated_object).then((res) => {
       console.info(res);
